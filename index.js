@@ -87,16 +87,82 @@ const titles = [
 //Array of authors and the book they wrote
 //"--- wrote --- in ---"
 
+
+
 //Sort books from oldest to most recent
+var dates = []
+books.forEach(info => {
+  dates.push(info["publishDate"])
+});
+
+dates.sort()
+dates.forEach(element => {
+  console.log(element)
+});
 
 //sort books alphabetically
 
+titles.sort()
+console.log(titles)
+
+
 //Find who wrote War and Peace
+books.forEach(author)
+function author (info) {
+  if (info["name"] == "War and Peace") {
+    console.log(info["authorFirst"], info["authorLast"]);
+  }
+}
+
 
 //how many books were written before 1900?
+var dates = []
+books.forEach(addDates)
+function addDates(info) {
+ dates.push(info["publishDate"])
+}
+var numofbooks = 0
+dates.forEach(beforeDate)
+function beforeDate (amount) {
+  if (amount < 1900) {
+    numofbooks += 1
+  }
+}
+console.log(numofbooks)
+
+
 
 //was there at least one book published within the last 100 years?
+var wasit = false
+dates.forEach(dateSorter)
+function dateSorter(date) {
+  if (2023 - date <= 100) {
+    wasit = true
+  }
+}
+
+if (wasit == true) {
+  console.log("there was a book written in the last 100 years")
+} else {
+  console.log("there is not a book written in the last 100 years")
+}
 
 //was every book published within the last 100 years?
+var old = true
+dates.forEach(filterDate)
+function filterDate(date) {
+  if (2023 - date >= 100) {
+    old = false
+  }
+}
+console.log(old)
 
 //print a list of books that "includes" the genre historical
+var histgenres = []
+books.forEach (subject)
+function subject(info) {
+  if (info["genre"].includes("historical")) {
+    histgenres.push(info["name"])
+  }
+}
+console.log(histgenres)
